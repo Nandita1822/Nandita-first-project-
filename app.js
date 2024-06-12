@@ -14,7 +14,7 @@ const Review = require("./models/review.js");
 const { listingSchema, reviewSchema } = require("./schema.js");  //Joi
 const listingRouter = require("./routes/listing.js");   // Express Router
 const reviewRouter = require("./routes/review.js");   // Express Router
-const userRouter = require("./routes/user.js");  // Express Router
+const userRouter = require("./routes/users.js");   // Express Router
 // const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
@@ -68,6 +68,13 @@ app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 // app.use(cookieParser());
 
+app.use((req, res, next) => {
+    res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
+    res.locals.currUser = req.user;
+    next();
+})
+
 app.use(session(sessionOptions));  //express-session
 app.use(flash());  //connect-flash
 
@@ -80,13 +87,6 @@ passport.use(new LocalStrategy(User.authenticate()));  // use static authenticat
 // use static serialize and deserialize of model for passport session support
 passport.serializeUser(User.serializeUser());  // To store user related info in session
 passport.deserializeUser(User.deserializeUser());  // To remove user related info in session
-
-app.use((req, res, next) => {
-    res.locals.success = req.flash("success");
-    res.locals.error = req.flash("error");
-    res.locals.currUser = req.user;
-    next();
-})
 
 app.get("/", (req, res) => {
     // res.send("Hi, I am root.")
@@ -104,7 +104,7 @@ app.all("*", (req, res, next) => {
 
 app.use((err, req, res, next) => {
     let { statusCode = 500, message = "Something went wrong!" } = err;
-    res.status(statusCode).render("listings/error.ejs", { err });
+    res.status(statusCode).render("listings/error.ejs", { message });
     // res.status(statusCode).send(message);
 });
 
