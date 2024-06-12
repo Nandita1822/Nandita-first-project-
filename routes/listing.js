@@ -5,7 +5,8 @@ const Listing = require("../models/listing.js");
 const {isLoggedIn,isOwner,validateListing }=require("../middleware.js");
 const listingController = require("../controllers/listing.js");
 const multer  = require('multer');
-const cloudConfig = require('../config/cloudconfig.js');
+const { storage } = require("../config/cloudconfig.js");
+
 
 // Your code that uses cloudConfig
 
