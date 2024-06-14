@@ -34,7 +34,7 @@
     </button>
     <div class="collapse navbar-collapse bg-white" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link" href="/listings">Home <i class="fa-solid fa-house"></i></a>
+        <a class="nav-link" href="/listings"><i class="fa-solid fa-house"></i></a>
       </div>
       <div class="navbar-nav ms-auto ">
         <form class="d-flex" role="search">
@@ -49,10 +49,10 @@
         </form>
       </div>
       <div class="navbar-nav ms-auto">
-        <a class="nav-link" href="/listings/new"><i class="fa-duotone fa-cloud-arrow-up"></i> Post </a>
+        <a class="nav-link bg-light" href="/listings/new" <i class="fa-solid fa-cloud-arrow-up"></i> Post</a>
         <% if(!currUser){%>
         <a class="nav-link" href="/signup"><b><i class="fa-solid fa-user-plus"></i> Sign up</b></a>
-        <a class="nav-link" href="/login"><b><i class="fa-solid fa-right-to-bracket"> </i>Log in</b></a>
+        <a class="nav-link" href="/login"><b><i class="fa-solid fa-right-to-bracket"></i> Log in</b></a>
         <%}%> <% if(currUser){%>
         <a class="nav-link" href="/logout"><b><i class="fa-sharp fa-solid fa-left-from-bracket"></i> Logout</b></a>
         <%}%>
