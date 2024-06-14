@@ -34,6 +34,53 @@ body{
     text-decoration: underline;  
     
   }
+/* Search input styling */
+.search-inp {
+    border-radius: 25px;
+    padding: 0.5rem 3rem;
+}
+
+/* Toggle switch styling */
+.toggle-container {
+    position: relative;
+    margin-left: 1rem;
+}
+
+.toggle-input {
+    display: none;
+}
+
+.toggle-label {
+    display: block;
+    width: 60px;
+    height: 34px;
+    background-color: #ccc;
+    border-radius: 34px;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.toggle-label .toggle-slider {
+    display: block;
+    width: 26px;
+    height: 26px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    transition: transform 0.2s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-input:checked + .toggle-label {
+    background-color: #4caf50;
+}
+
+.toggle-input:checked + .toggle-label .toggle-slider {
+    transform: translateX(26px);
+}
 
   .f-info-links ,  .f-info-socials ,.f-info-brand{
     width: 100%;
